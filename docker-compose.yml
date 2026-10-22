@@ -1,0 +1,22 @@
+services:
+  flowpilot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flowpilot-ai
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - CORS_ORIGIN=http://localhost:5173
+      - NEBIUS_API_KEY=${NEBIUS_API_KEY}
+      - NEBIUS_BASE_URL=${NEBIUS_BASE_URL:-https://api.tokenfactory.nebius.com/v1/}
+      - NEBIUS_MODEL_ID=${NEBIUS_MODEL_ID:-nvidia/llama-3.1-nemotron-70b-instruct}
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+    restart: unless-stopped
+    volumes:
+      - flowpilot_data:/app/data
+
+volumes:
+  flowpilot_data:
