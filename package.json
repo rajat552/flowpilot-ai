@@ -1,0 +1,27 @@
+{
+  "name": "flowpilot-ai-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FlowPilot AI — From instructions to verified outcomes. Powered by NVIDIA Nemotron via Nebius Token Factory.",
+  "author": "FlowPilot AI Team",
+  "license": "Apache-2.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "dev:api": "npm run dev --workspace=@flowpilot/api",
+    "dev:web": "npm run dev --workspace=@flowpilot/web",
+    "build": "npm run build --workspace=@flowpilot/shared && npm run build --workspace=@flowpilot/api && npm run build --workspace=@flowpilot/web",
+    "build:shared": "npm run build --workspace=@flowpilot/shared",
+    "build:api": "npm run build --workspace=@flowpilot/api",
+    "build:web": "npm run build --workspace=@flowpilot/web",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.3"
+  }
+}
