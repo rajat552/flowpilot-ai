@@ -45,7 +45,7 @@ Understand ➔ Plan ➔ Validate ➔ Execute ➔ Verify ➔ Recover ➔ Deliver
 | **Backend** | **Node.js 22 LTS + Express + TypeScript** | Agent orchestrator, SSE streaming, DAG runner, tool registry |
 | **Validation** | **Zod** | Strict schema validation for plans, tool inputs, and outputs |
 | **Frontend** | **React 18 + Vite + Tailwind CSS** | Real-time SSE timeline, plan review gate, artifact viewer |
-| **Icons & UI** | **Lucide React + Glassmorphism** | Accessible, responsive, high-contrast dark theme |
+| **Icons & UI** | **Lucide React + Neo-Brutalist Theme** | Accessible, responsive, MLH-inspired engineering blueprint styling |
 | **Search Engine**| **Tavily + DuckDuckGo HTML Fallback** | Live web search with authentic citations and URLs |
 | **Security** | **SSRF Guard + Secret Redaction** | Loopback/metadata IP blocking and credential sanitization |
 | **Persistence** | **JSON State Store / MongoDB Driver** | State survives restarts; full event sequence replay |
@@ -188,6 +188,36 @@ The application will be accessible on port `4000`.
 
 ---
 
+## 💡 Nebius Token Factory & NVIDIA Nemotron Integration
+
+FlowPilot AI leverages **Nebius Token Factory** to access high-performance GPU-accelerated **NVIDIA Nemotron** open models (`nvidia/llama-3.1-nemotron-70b-instruct`):
+
+1. **Structured Topological Planning:** Nemotron-70B's strong reasoning capabilities deconstruct vague user goals into strongly typed Directed Acyclic Graphs (DAGs) with strict input/output step dependencies.
+2. **Quality & Critique Verification:** During the audit stage, Nemotron evaluates synthesized research findings against explicit acceptance criteria, ensuring verifiable accuracy before delivery.
+3. **Low-Latency Streaming:** Nebius Token Factory's optimized inference delivery provides sub-second first-token latencies, enabling smooth real-time SSE progress streaming to the frontend.
+4. **Resilient Production Fallback:** The backend client gracefully handles rate limits and API outages with bounded retries and deterministic fallback behavior.
+
+---
+
+## 💬 Feedback on Nebius Token Factory & NVIDIA Technologies
+
+*Submitted as part of the official hackathon feedback requirements:*
+
+- **Nebius Token Factory:**
+  - *Strengths:* Exceptional throughput and blazing-fast time-to-first-token (TTFT) on NVIDIA GPU infrastructure. Drop-in OpenAI API compatibility allowed rapid integration without needing proprietary SDKs.
+  - *Opportunities:* Providing native structured JSON schema enforcement (`response_format: { type: "json_object" }` with schema validation) at the API gateway level would further accelerate agent developers creating complex DAGs.
+- **NVIDIA Nemotron-70B:**
+  - *Strengths:* Outstanding step-by-step reasoning and instruction following. It consistently followed strict JSON output formats and demonstrated superior tool dependency ordering compared to standard general-purpose open models.
+  - *Opportunities:* Additional quantized lightweight variants (e.g., Nemotron-8B or Nemotron-Nano) optimized on Token Factory would be great for micro-task verification steps where low compute overhead is desired.
+
+---
+
+## 📝 Submission Period Disclosure
+
+This project, **FlowPilot AI**, was developed from scratch specifically for the **NVIDIA × Nebius Global AI Hackathon (Best Apps and Agents Track)** during the official submission period. All architecture, backend orchestration, frontend blueprint UI, test suites, and integration logic were created for this competition.
+
+---
+
 ## 🔒 Security & Agent Guardrails
 
 - **Zero Arbitrary Execution:** FlowPilot does not execute arbitrary model code or unconfined shell scripts.
@@ -200,3 +230,4 @@ The application will be accessible on port `4000`.
 ## 📄 License
 
 Distributed under the [Apache-2.0 License](LICENSE).
+
