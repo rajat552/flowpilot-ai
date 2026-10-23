@@ -46,7 +46,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#090d16] text-slate-100 selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen flex flex-col bg-blueprint-grid text-slate-900 selection:bg-amber-400 selection:text-black font-sans antialiased">
       <Navbar
         currentView={currentView}
         onNavigate={(view) => setCurrentView(view)}
