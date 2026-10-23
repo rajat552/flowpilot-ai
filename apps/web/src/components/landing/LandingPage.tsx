@@ -52,12 +52,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStartWorkflow, onNav
   return (
     <div className="space-y-20 py-8">
       {/* Hero Section */}
-      <section className="relative text-center max-w-4xl mx-auto px-4 pt-8">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-white border-2 border-slate-900 text-slate-900 text-xs font-mono font-bold mb-6 shadow-[2px_2px_0px_#0f172a]">
-          <span className="w-2 h-2 rounded-full bg-amber-400 border border-slate-900" />
-          <span>NEBIUS TOKEN FACTORY × NVIDIA NEMOTRON</span>
-        </div>
-
+      <section className="relative text-center max-w-4xl mx-auto px-4 pt-12">
         <h1 className="font-display text-4xl sm:text-6xl font-black tracking-tight text-slate-950 mb-6 leading-tight uppercase">
           From Instructions to{' '}
           <span className="text-blue-600 block sm:inline">
@@ -85,28 +80,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStartWorkflow, onNav
           >
             View Dashboard & Metrics
           </button>
-        </div>
-      </section>
-
-      {/* High-Impact Stats Banner (Directly styled like MLH 5M+ / 1000+ / 100 Countries) */}
-      <section className="max-w-5xl mx-auto px-4">
-        <div className="card-retro p-8 bg-white grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div className="space-y-1 border-r-0 md:border-r-2 border-slate-900/10 last:border-r-0">
-            <div className="font-mono font-black text-4xl sm:text-5xl text-slate-950">100%</div>
-            <div className="font-mono text-xs font-bold text-slate-600 uppercase tracking-wider">Acceptance Audit</div>
-          </div>
-          <div className="space-y-1 border-r-0 md:border-r-2 border-slate-900/10 last:border-r-0">
-            <div className="font-mono font-black text-4xl sm:text-5xl text-blue-600">7-Stage</div>
-            <div className="font-mono text-xs font-bold text-slate-600 uppercase tracking-wider">Autonomous DAG</div>
-          </div>
-          <div className="space-y-1 border-r-0 md:border-r-2 border-slate-900/10 last:border-r-0">
-            <div className="font-mono font-black text-4xl sm:text-5xl text-amber-500">15+</div>
-            <div className="font-mono text-xs font-bold text-slate-600 uppercase tracking-wider">Benchmark Tasks</div>
-          </div>
-          <div className="space-y-1">
-            <div className="font-mono font-black text-4xl sm:text-5xl text-emerald-600">&lt;1.4s</div>
-            <div className="font-mono text-xs font-bold text-slate-600 uppercase tracking-wider">Tool Execution</div>
-          </div>
         </div>
       </section>
 
