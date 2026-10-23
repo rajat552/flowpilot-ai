@@ -59,65 +59,65 @@ export const ReportView: React.FC<ReportViewProps> = ({ runId, onBack }) => {
       <div className="flex items-center justify-between">
         <button
           onClick={onBack}
-          className="text-xs font-mono text-slate-400 hover:text-slate-200 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800"
+          className="btn-retro btn-retro-secondary px-3.5 py-1.5 text-xs font-mono font-bold"
         >
-          <ArrowLeft className="w-3.5 h-3.5" /> Back to Workspace
+          <ArrowLeft className="w-3.5 h-3.5 mr-1.5" /> Back to Workspace
         </button>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <button
             onClick={handleCopy}
-            className="px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-mono text-slate-300 transition-colors"
+            className="btn-retro btn-retro-secondary px-3.5 py-1.5 text-xs font-mono font-bold"
           >
             {copied ? '✓ Copied Markdown' : 'Copy Markdown'}
           </button>
           <button
             onClick={handleDownloadMarkdown}
-            className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-bold text-xs tracking-tight shadow-lg shadow-cyan-500/20 flex items-center gap-1.5"
+            className="btn-retro btn-retro-primary px-4 py-1.5 text-xs font-mono font-bold uppercase"
           >
-            <Download className="w-3.5 h-3.5" /> Export Artifact (.md)
+            <Download className="w-3.5 h-3.5 mr-1.5" /> Export Artifact (.md)
           </button>
         </div>
       </div>
 
       {/* Verified Banner */}
-      <div className="glass-panel p-6 rounded-3xl border border-emerald-500/30 bg-emerald-950/10 space-y-2">
-        <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs">
-          <ShieldCheck className="w-4 h-4" />
+      <div className="card-retro p-6 sm:p-8 bg-emerald-50 space-y-2">
+        <div className="flex items-center gap-2 text-emerald-800 font-mono font-bold text-xs">
+          <ShieldCheck className="w-4 h-4 text-emerald-700" />
           <span>VERIFIED DELIVERABLE ARTIFACT • FLOWPILOT ACCEPTANCE ENGINE</span>
         </div>
-        <h1 className="text-xl sm:text-2xl font-bold text-white">
+        <h1 className="font-display text-xl sm:text-2xl font-black text-slate-950 uppercase tracking-tight">
           {artifact?.title || 'Verified Project Management Evaluation Report'}
         </h1>
-        <p className="text-xs text-slate-300">
+        <p className="font-mono text-xs text-slate-700 leading-relaxed">
           This report was synthesized from authentic live search results, audited for free-tier constraints,
           and checked against deterministic acceptance criteria.
         </p>
       </div>
 
       {/* Report Content Container */}
-      <div className="glass-panel p-8 rounded-3xl border border-slate-800 space-y-6">
+      <div className="card-retro p-6 sm:p-10 bg-white space-y-6">
         {artifact?.rawContent ? (
-          <div className="prose prose-invert max-w-none text-slate-200 text-sm leading-relaxed space-y-6 font-sans">
+          <div className="max-w-none text-slate-800 text-xs sm:text-sm leading-relaxed space-y-6 font-mono">
             {/* Render nicely formatted Markdown lines */}
             {artifact.rawContent.split('\n\n').map((paragraph, idx) => {
               if (paragraph.startsWith('# ')) {
                 return (
-                  <h1 key={idx} className="text-2xl font-extrabold text-white pb-3 border-b border-slate-800">
+                  <h1 key={idx} className="font-display text-2xl font-black text-slate-950 uppercase pb-3 border-b-2 border-slate-900">
                     {paragraph.replace('# ', '')}
                   </h1>
                 );
               }
               if (paragraph.startsWith('## ')) {
                 return (
-                  <h2 key={idx} className="text-lg font-bold text-cyan-400 mt-8 mb-3 flex items-center gap-2">
+                  <h2 key={idx} className="font-display text-lg font-bold text-blue-600 uppercase mt-8 mb-3 flex items-center gap-2">
                     {paragraph.replace('## ', '')}
                   </h2>
                 );
               }
               if (paragraph.startsWith('### ')) {
                 return (
-                  <h3 key={idx} className="text-base font-bold text-slate-100 mt-4 mb-2">
+                  <h3 key={idx} className="font-display text-base font-bold text-slate-950 uppercase mt-4 mb-2">
                     {paragraph.replace('### ', '')}
                   </h3>
                 );
@@ -126,8 +126,8 @@ export const ReportView: React.FC<ReportViewProps> = ({ runId, onBack }) => {
                 // Render Table cleanly
                 const rows = paragraph.trim().split('\n');
                 return (
-                  <div key={idx} className="overflow-x-auto my-4 rounded-xl border border-slate-800">
-                    <table className="w-full text-left text-xs font-sans">
+                  <div key={idx} className="overflow-x-auto my-4 rounded-lg border-2 border-slate-900 shadow-[3px_3px_0px_#0f172a]">
+                    <table className="w-full text-left text-xs font-mono">
                       <tbody>
                         {rows.map((row, rIdx) => {
                           const cells = row.split('|').filter((c) => c.trim() !== '');
@@ -135,10 +135,10 @@ export const ReportView: React.FC<ReportViewProps> = ({ runId, onBack }) => {
                           return (
                             <tr
                               key={rIdx}
-                              className={`border-b border-slate-800/80 ${rIdx === 0 ? 'bg-slate-900/90 font-bold text-cyan-300' : 'bg-slate-950/40 text-slate-300'}`}
+                              className={`border-b border-slate-900/20 last:border-b-0 ${rIdx === 0 ? 'bg-amber-100 font-bold text-slate-950 border-b-2 border-slate-900' : 'bg-white text-slate-800 hover:bg-slate-50'}`}
                             >
                               {cells.map((cell, cIdx) => (
-                                <td key={cIdx} className="p-3 border-r border-slate-800/60 last:border-r-0">
+                                <td key={cIdx} className="p-3 border-r border-slate-900/10 last:border-r-0">
                                   {cell.trim().replace(/\*\*/g, '')}
                                 </td>
                               ))}
@@ -152,7 +152,7 @@ export const ReportView: React.FC<ReportViewProps> = ({ runId, onBack }) => {
               }
               if (paragraph.startsWith('- ') || paragraph.startsWith('1. ') || paragraph.startsWith('[')) {
                 return (
-                  <div key={idx} className="space-y-1.5 pl-2 font-mono text-xs text-slate-300">
+                  <div key={idx} className="space-y-1.5 pl-2 font-mono text-xs sm:text-sm text-slate-700">
                     {paragraph.split('\n').map((line, lIdx) => (
                       <p key={lIdx} className="leading-relaxed">
                         {line}
@@ -162,7 +162,7 @@ export const ReportView: React.FC<ReportViewProps> = ({ runId, onBack }) => {
                 );
               }
               return (
-                <p key={idx} className="text-slate-300 text-sm leading-relaxed">
+                <p key={idx} className="text-slate-800 text-xs sm:text-sm leading-relaxed">
                   {paragraph}
                 </p>
               );
