@@ -36,16 +36,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate, onOpenN
           <div className="w-10 h-10 rounded-lg bg-amber-400 border-2 border-slate-900 shadow-[2px_2px_0px_#0f172a] flex items-center justify-center transition-transform group-hover:-translate-y-0.5">
             <Compass className="w-5 h-5 text-slate-950" />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-display font-extrabold text-lg tracking-tight text-slate-950">
-                FlowPilot<span className="text-blue-600">.AI</span>
-              </span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-amber-100 text-amber-950 border border-slate-900 font-mono font-bold">
-                NEMOTRON-70B
-              </span>
-            </div>
-            <p className="text-[11px] text-slate-600 font-mono hidden sm:block">From instructions to verified outcomes</p>
+          <div className="flex items-center gap-2">
+            <span className="font-display font-extrabold text-lg tracking-tight text-slate-950">
+              FlowPilot<span className="text-blue-600">.AI</span>
+            </span>
           </div>
         </div>
 
