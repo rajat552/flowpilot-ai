@@ -64,30 +64,32 @@ export const NewWorkflowModal: React.FC<NewWorkflowModalProps> = ({
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <div className="glass-panel p-8 rounded-3xl border border-slate-800 shadow-2xl relative">
-        <div className="flex items-center justify-between pb-6 border-b border-slate-800 mb-6">
+      <div className="card-retro p-6 sm:p-8 bg-white space-y-6">
+        <div className="flex items-center justify-between pb-5 border-b-2 border-slate-900">
           <div>
             <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400">
+              <span className="p-1.5 rounded-lg bg-amber-400 border-2 border-slate-900 text-slate-950 shadow-[2px_2px_0px_#0f172a]">
                 <Sparkles className="w-4 h-4" />
               </span>
-              <h2 className="text-xl font-bold text-white">Create New Workflow</h2>
+              <h2 className="font-display text-xl sm:text-2xl font-black text-slate-950 uppercase tracking-tight">
+                Create New Workflow
+              </h2>
             </div>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="font-mono text-xs text-slate-600 mt-1">
               Decompose your high-level goal into an approved DAG plan using NVIDIA Nemotron.
             </p>
           </div>
           <button
             onClick={onCancel}
-            className="text-xs text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800"
+            className="btn-retro btn-retro-secondary px-3 py-1.5 text-xs font-mono"
           >
             Cancel
           </button>
         </div>
 
         {/* Template Pills */}
-        <div className="mb-6">
-          <label className="text-[11px] font-mono uppercase text-slate-400 block mb-2">
+        <div>
+          <label className="text-xs font-mono font-bold uppercase text-slate-700 block mb-2">
             Quick-Start Goal Templates
           </label>
           <div className="flex flex-wrap gap-2">
@@ -96,7 +98,7 @@ export const NewWorkflowModal: React.FC<NewWorkflowModalProps> = ({
                 key={idx}
                 type="button"
                 onClick={() => setGoal(t.text)}
-                className="text-xs px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-300 transition-colors"
+                className="text-xs font-mono font-bold px-3 py-1.5 rounded-md bg-slate-50 hover:bg-amber-100 border-2 border-slate-900 text-slate-900 transition-all hover:-translate-y-0.5 shadow-[2px_2px_0px_#0f172a]"
               >
                 {t.label}
               </button>
@@ -107,8 +109,8 @@ export const NewWorkflowModal: React.FC<NewWorkflowModalProps> = ({
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <div className="flex justify-between items-center mb-2">
-              <label className="text-xs font-semibold text-slate-200">
-                Goal / Natural-Language Instruction <span className="text-rose-400">*</span>
+              <label className="text-xs font-mono font-bold uppercase text-slate-900">
+                Goal / Natural-Language Instruction <span className="text-rose-600">*</span>
               </label>
               <span className="text-[11px] font-mono text-slate-500">{goal.length}/2000</span>
             </div>
@@ -117,27 +119,32 @@ export const NewWorkflowModal: React.FC<NewWorkflowModalProps> = ({
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
               placeholder="e.g. Research three project-management products, compare their features and pricing..."
-              className="w-full bg-[#070b14] border border-slate-800 rounded-xl p-3.5 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-all font-sans"
+              className="w-full bg-slate-50 border-2 border-slate-900 rounded-lg p-3.5 text-xs sm:text-sm text-slate-950 placeholder-slate-400 focus:outline-none focus:bg-white focus:shadow-[4px_4px_0px_#0f172a] transition-all font-mono leading-relaxed"
               required
             />
           </div>
 
           {/* Workflow Type */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {['research', 'comparison', 'audit', 'custom'].map((type) => (
-              <button
-                key={type}
-                type="button"
-                onClick={() => setWorkflowType(type)}
-                className={`py-2 px-3 rounded-xl border text-xs font-medium capitalize transition-all ${
-                  workflowType === type
-                    ? 'bg-cyan-500/10 border-cyan-500 text-cyan-300'
-                    : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700'
-                }`}
-              >
-                {type}
-              </button>
-            ))}
+          <div>
+            <label className="text-xs font-mono font-bold uppercase text-slate-700 block mb-2">
+              Workflow Paradigm
+            </label>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              {['research', 'comparison', 'audit', 'custom'].map((type) => (
+                <button
+                  key={type}
+                  type="button"
+                  onClick={() => setWorkflowType(type)}
+                  className={`py-2 px-3 rounded-md border-2 border-slate-900 text-xs font-mono font-bold uppercase transition-all ${
+                    workflowType === type
+                      ? 'bg-amber-400 text-slate-950 shadow-[2px_2px_0px_#0f172a]'
+                      : 'bg-white text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  {type}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Advanced Accordion */}
@@ -145,27 +152,27 @@ export const NewWorkflowModal: React.FC<NewWorkflowModalProps> = ({
             <button
               type="button"
               onClick={() => setShowAdvanced(!showAdvanced)}
-              className="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1.5 font-mono"
+              className="text-xs text-slate-700 hover:text-slate-950 flex items-center gap-1.5 font-mono font-bold"
             >
-              <Settings2 className="w-3.5 h-3.5" />
-              <span>{showAdvanced ? 'Hide Advanced Settings' : 'Configure Safety & Token Limits'}</span>
+              <Settings2 className="w-3.5 h-3.5 text-blue-600" />
+              <span>{showAdvanced ? '[-] Hide Advanced Settings' : '[+] Configure Safety & Token Limits'}</span>
             </button>
 
             {showAdvanced && (
-              <div className="mt-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="mt-4 p-4 rounded-lg bg-slate-50 border-2 border-slate-900 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-[11px] text-slate-300 block mb-1">Max Retries per Step</label>
+                  <label className="text-[11px] font-mono font-bold text-slate-700 block mb-1">Max Retries per Step</label>
                   <input
                     type="number"
                     min={0}
                     max={5}
                     value={maxRetries}
                     onChange={(e) => setMaxRetries(parseInt(e.target.value, 10))}
-                    className="w-full bg-[#070b14] border border-slate-800 rounded-lg p-2 text-xs text-slate-200 font-mono"
+                    className="w-full bg-white border-2 border-slate-900 rounded p-2 text-xs text-slate-950 font-mono"
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] text-slate-300 block mb-1">Token Budget Ceiling</label>
+                  <label className="text-[11px] font-mono font-bold text-slate-700 block mb-1">Token Budget Ceiling</label>
                   <input
                     type="number"
                     step={1000}
@@ -173,7 +180,7 @@ export const NewWorkflowModal: React.FC<NewWorkflowModalProps> = ({
                     max={50000}
                     value={budgetTokens}
                     onChange={(e) => setBudgetTokens(parseInt(e.target.value, 10))}
-                    className="w-full bg-[#070b14] border border-slate-800 rounded-lg p-2 text-xs text-slate-200 font-mono"
+                    className="w-full bg-white border-2 border-slate-900 rounded p-2 text-xs text-slate-950 font-mono"
                   />
                 </div>
               </div>
@@ -181,32 +188,32 @@ export const NewWorkflowModal: React.FC<NewWorkflowModalProps> = ({
           </div>
 
           {error && (
-            <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-900/60 text-xs text-rose-300 flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0" />
+            <div className="p-3 rounded-lg bg-rose-100 border-2 border-rose-600 text-xs font-mono font-bold text-rose-900 flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
               <span>{error}</span>
             </div>
           )}
 
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t-2 border-slate-900">
             <button
               type="button"
               onClick={onCancel}
-              className="px-4 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-slate-200 bg-slate-900 border border-slate-800"
+              className="btn-retro btn-retro-secondary px-4 py-2 text-xs"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isLoading}
-              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-bold text-xs tracking-tight transition-all shadow-lg shadow-cyan-500/20 disabled:opacity-50 flex items-center gap-2"
+              className="btn-retro btn-retro-primary px-6 py-2.5 text-xs disabled:opacity-50"
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" /> Decomposing Plan...
+                  <Loader2 className="w-4 h-4 mr-1.5 animate-spin" /> Decomposing Plan...
                 </>
               ) : (
                 <>
-                  Generate Plan with Nemotron <ArrowRight className="w-4 h-4" />
+                  Generate Plan with Nemotron <ArrowRight className="w-4 h-4 ml-1.5" />
                 </>
               )}
             </button>
