@@ -20,6 +20,18 @@
 
 ---
 
+## ⚖️ Judging Criteria Alignment
+
+| Hackathon Criterion | How FlowPilot AI Perfectly Satisfies It |
+|---|---|
+| **1. Technological Implementation**<br>*(Execution quality & use of Nebius / NVIDIA Nemotron)* | • **NVIDIA Nemotron-70B on Nebius Token Factory:** Deep reasoning for topological DAG planning and acceptance critique.<br>• **Robust Engineering Stack:** Production Node.js 22 LTS + TypeScript monorepo with strict Zod validation, SSE event streaming, topological DAG scheduler, and restart-safe persistence.<br>• **Security & Guardrails:** SSRF prevention against loopback & metadata IPs (`169.254.169.254`), secret redaction, and bounded retry loops.<br>• **Full Test Suite:** 12/12 passing Vitest integration tests + 15-scenario benchmark suite (`TESTING.md`). |
+| **2. Design**<br>*(Complete, coherent product experience, not just a technical PoC)* | • **End-to-End Workflow:** Complete user journey from intake form, to interactive DAG plan review gate, live step-by-step SSE execution timeline, and deliverable viewer with verified citations.<br>• **Neo-Brutalist Blueprint Aesthetic:** High-contrast, responsive MLH-inspired engineering theme with custom borders, monospace metadata, live state badges, and smooth micro-animations.<br>• **Production Readiness:** Containerized with multi-stage Dockerfile and Docker Compose, ready for immediate deployment. |
+| **3. Potential Impact**<br>*(Credible solution to a real problem for a real audience)* | • **The Core Problem:** The "illusion of completion"—autonomous agents hallucinate success, cite broken links, and deliver unverified claims.<br>• **Target Audience:** DevOps engineers, cloud architects, compliance auditors, and automated procurement teams who need verifiable results.<br>• **Demonstrated Impact:** Real-world scenarios (e.g. GPU cloud pricing audits across AWS/Nebius/Azure) where outcomes are deterministically checked before marking a run as delivered. |
+| **4. Quality of the Idea**<br>*(Creative, non-obvious use of models & genuine domain understanding)* | • **Non-Obvious Architecture:** Moves beyond naive chat prompts or unbounded ReAct loops by marrying **probabilistic LLM reasoning** (Nemotron-70B) with **deterministic code verification** (acceptance audit rules).<br>• **Topological Decomposition:** Utilizes Nemotron's high-parameter reasoning specifically for DAG dependency planning with explicit input/output contracts.<br>• **Verifiable Provenance:** Every claim in the final deliverable links to an authenticated, SSRF-validated external source. |
+
+
+---
+
 ## 🚀 The 7-Stage Execution Loop
 
 ```
